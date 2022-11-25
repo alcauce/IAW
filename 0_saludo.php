@@ -1,25 +1,30 @@
 <?php
 
-//información que recibimos
+//vamos a ver que información recibimos
+$nombre = 'no name';
+$apellidos = "no apellidos";
+$sexo = "H";
 
-$nombre='no name';
-$apellidos='no apellidos';
-$sexo="H";
-
-var_dump($_POST);
-$nombre=$_POST['nombre'];
-$apellidos=$_POST ['apellidos'];
+//var_dump($_POST);
+$nombre = $_POST['nombre'];
+$apellidos = $_POST['apellidos'];
 if (isset($_POST['sexo'])) {
-    $sexo=$_POST['sexo'];
+    $sexo = $_POST['sexo'];
 }
-//saludamos al nombre que nos ha dado
-if ($sexo=='H'){
-    $saludo='Hola señor';
-}
-elseif ($edad>20) {
-    $saludo = 'Hola señora';
-}
- else {
-    $saludo= "Hola señorita";
-}
+$edad = $_POST['edad'];
 
+//saludamos al "nombre" que nos han dado
+//segun sea $sexo
+/*if ($sexo == 'H') {
+    $saludo = 'Hola Señor ';
+} elseif ($edad > 20) {
+    $saludo = 'Hola Señora ';
+} else {
+    $saludo = 'Hola Señorita ';
+}
+*/
+//METEMOS UN IF TERNARIO
+$saludo = 'Hola señor'. ($sexo=='H'?'':($edad>20?'a':'ita'));
+
+$saludo .= $nombre . ' ' . $apellidos;
+echo $saludo;
